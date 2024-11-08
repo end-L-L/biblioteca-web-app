@@ -1,0 +1,54 @@
+<div class="wrapper">
+    <div class="manage-book">
+        <div class="row mt-3 mb-3">
+            <div class="form-group col-12">
+                <label class="title-manage">Gestión de Libros</label>
+            </div>
+        </div>
+        <div class="container">
+          <div class="add-category">
+
+            <div class="select-category">
+              <div class="category-container">
+
+                <label class="title-estado">Selecciona el tipo de Categoría</label>
+                <mat-form-field>
+                  <mat-label>Categoría</mat-label>
+                  <mat-select>
+                    @for(cate of categorias; track cate) {
+                      <mat-option [value]="book.value">{{book.viewValue}}</mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="mat-input" appearance="outline">
+                  <mat-label>Ingrese el Nombre de la Categoría</mat-label>
+                  <input matInput [(ngModel)]="book.category" placeholder="Escribe la categoría">
+                </mat-form-field>
+                <div @If(errors.category) class="invalid-feedback">{{ errors.category }}</div>
+
+                <button class="btn btn-primary" type="submit" (click)="actualizar()">Actualizar</button>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="field-button-container">
+                  <mat-form-field class="mat-input" appearance="outline">
+                    <mat-label>Agregar un Libro</mat-label>
+                    <input matInput [(ngModel)]="user.ID" placeholder="Escribe el ID del libro">
+                  </mat-form-field>
+                  <button class="btn btn-primary" type="submit" (click)="actualizar()">Agregar</button>
+                </div>
+                
+                <div class="field-button-container">
+                  <mat-form-field class="mat-input" appearance="outline">
+                    <mat-label>Eliminar un Libro</mat-label>
+                    <input matInput [(ngModel)]="book.ID" placeholder="Escribe el ID del libro">
+                  </mat-form-field>
+                  <button class="btn btn-primary" type="submit" (click)="actualizar()">Actualizar</button>
+                </div>
+                
+        </div>
+    </div>
+</div>

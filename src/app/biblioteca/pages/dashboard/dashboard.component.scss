@@ -1,0 +1,27 @@
+.container {
+    margin: 20px;
+}
+
+.m-icon {
+    vertical-align: middle;
+}
+
+span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  
+  .card {
+    cursor: pointer;
+  }
+  
+  .card-image {
+    width: 100%;
+    height: auto;
+  }

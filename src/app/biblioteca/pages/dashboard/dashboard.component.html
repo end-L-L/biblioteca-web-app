@@ -1,0 +1,69 @@
+<mat-sidenav-container fullscreen>
+
+    <mat-sidenav #sidenav mode="push">
+
+        <mat-toolbar color="primary">
+            <span>Menú</span>
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </mat-toolbar>
+
+        <mat-nav-list>
+            <a mat-list-item routerLink="./library" (click)="sidenav.toggle()" style="display: flex;">
+                <mat-icon mat-list-icon class="m-icon">list</mat-icon>
+                <span> Dashboard</span>
+            </a>
+
+            <a mat-list-item routerLink="./books" (click)="sidenav.toggle()" style="display: flex;">
+                <mat-icon mat-list-icon class="m-icon">list</mat-icon>
+                <span> Listado de Libros</span>
+            </a>
+            <a mat-list-item routerLink="./manage" (click)="sidenav.toggle()" style="display: flex;">
+                <mat-icon mat-list-icon class="m-icon">list</mat-icon>
+                <span>Gestión de Libros</span>
+            </a>
+            <a mat-list-item routerLink="./return" (click)="sidenav.toggle()" style="display: flex;">
+                <mat-icon mat-list-icon class="m-icon">list</mat-icon>
+                <span>Devolver Libro</span>
+            </a>
+            <a mat-list-item routerLink="./members" (click)="sidenav.toggle()" style="display: flex;">
+                <mat-icon mat-list-icon class="m-icon">list</mat-icon>
+                <span>Miembros</span>
+            </a>
+            <a mat-list-item routerLink="./loans" (click)="sidenav.toggle()" style="display: flex;">
+                <mat-icon mat-list-icon class="m-icon">list</mat-icon>
+                <span>Gestión de Prestamos</span>
+            </a>
+            <a mat-list-item routerLink="./settings" (click)="sidenav.toggle()" style="display: flex;">
+                <mat-icon mat-list-icon class="m-icon">list</mat-icon>
+                <span>Ajustes</span>
+            </a>
+        </mat-nav-list>
+
+    </mat-sidenav>
+
+    <mat-toolbar>
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <div class="container">
+        <router-outlet></router-outlet>
+
+        <div class="dashboard-container">
+            @for (option of options; track option){
+                <mat-card (click)="navigateTo(option.link)">
+                    <mat-card-header>
+                        <mat-card-title> {{option.name}} </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <!-- <img src="{{ option.icon }}" alt="{{ option.name }}" class="card-image" /> -->
+                    </mat-card-content>
+                </mat-card>
+            }
+        </div>
+    </div>
+</mat-sidenav-container>

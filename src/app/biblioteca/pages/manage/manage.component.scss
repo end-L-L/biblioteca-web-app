@@ -1,0 +1,66 @@
+.wrapper{
+    height: 100%;
+    width: 100%;
+    //Flex
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #000000;
+  }
+  .return-book{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 1.5rem;
+    gap: 1.5rem;
+    margin-left: 8px;
+  }
+  
+  .title-manage{
+    font-size: 40px;
+    text-align: left;
+    font-family: Nexa-Bold;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-transform: capitalize;
+    opacity: 1;
+  }
+
+
+  .category-container {
+    padding-top: 3.5rem;
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+    margin-bottom: 1.5rem; 
+    
+}
+
+  .field-button-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+    margin-bottom: 1.5rem; 
+    margin-left: 20px;
+}
+
+  .btn-primary {
+    width: 208px;
+    height: 48px;
+    background-color: #0092B8!important;
+    border-color: #0092B8!important;
+    border-radius: 8px!important;
+    opacity: 1;
+    //Fuente
+    text-align: center;
+    font-family: Nexa-Bold;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+  }

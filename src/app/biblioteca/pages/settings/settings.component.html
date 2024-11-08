@@ -1,0 +1,41 @@
+<div class="wrapper">
+        <div class="settings">
+            <div class="row mt-3 mb-3">
+                <div class="form-group col-12">
+                  <label class="title-settings">Configuraciones</label>
+                </div>
+              </div>
+                <div class="container">
+                    <mat-form-field class="mat-input" appearance="outline">
+                    <mat-label>Días de Prestamo</mat-label>
+                    <input matInput [(ngModel)]="book.days" placeholder="Escribe la cantidas de días">
+                </mat-form-field>
+                <div *@If(errors.days) class="invalid-feedback">{{ errors.days }}</div>
+                <button class="btn btn-primary" type="submit" (click)="actualizar()">Actualizar</button>
+                </div>
+
+
+                    <div class="delay">
+                        <mat-form-field class="mat-input" appearance="outline">
+                            <mat-label>Cuota por Retraso</mat-label>
+                            <input matInput [(ngModel)]="book.delay" mask='($) 00000.00' placeholder="Ingrese el Precio">
+                        </mat-form-field>
+                        <div *@If(errors.delay) class="invalid-feedback">{{ errors.delay }}</div>
+                        <button class="btn btn-primary" type="submit" (click)="actualizar()">Actualizar</button>
+                    </div>
+     
+
+
+
+                <div class="losses">
+                    <mat-form-field class="mat-input" appearance="outline">
+                        <mat-label>Cuota por Extravío</mat-label>
+                        <input matInput [(ngModel)]="book.losses" mask='($) 00000.00' placeholder="Ingrese el Precio">
+                    </mat-form-field>
+                    <div *@If(errors.losses) class="invalid-feedback">{{ errors.losses }}</div>
+                    <button class="btn btn-primary" type="submit" (click)="actualizar()">Actualizar</button>
+            </div>
+
+
+    </div>
+</div>
