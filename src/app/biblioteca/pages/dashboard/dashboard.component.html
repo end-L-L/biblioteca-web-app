@@ -11,7 +11,7 @@
         </mat-toolbar>
 
         <mat-nav-list>
-            <a mat-list-item routerLink="./library" (click)="sidenav.toggle()" style="display: flex;">
+            <a mat-list-item routerLink="./library" (click)="sidenav.toggle()" (click)=" switch()" style="display: flex;">
                 <mat-icon mat-list-icon class="m-icon">list</mat-icon>
                 <span> Dashboard</span>
             </a>
@@ -51,19 +51,24 @@
     </mat-toolbar>
 
     <div class="container">
-        <router-outlet></router-outlet>
 
-        <div class="dashboard-container">
-            @for (option of options; track option){
-                <mat-card (click)="navigateTo(option.link)">
-                    <mat-card-header>
-                        <mat-card-title> {{option.name}} </mat-card-title>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <!-- <img src="{{ option.icon }}" alt="{{ option.name }}" class="card-image" /> -->
-                    </mat-card-content>
-                </mat-card>
-            }
-        </div>
+        @if ( showDashboard ) {
+            <h1 class="title-center">Seleccione una Opción</h1>
+            <div class="dashboard-container" (click)="switch()">
+                @for (option of options; track option){
+                    <mat-card (click)="navigateTo(option.link)">
+                        <mat-card-header class="card-header-center">
+                            <mat-card-title> {{option.name}} </mat-card-title>
+                        </mat-card-header>
+                       
+                        <mat-card-content>
+                            <img src="{{ option.icon }}" alt="{{ option.name }}" class="card-image" /> 
+                        </mat-card-content>
+                    </mat-card>
+                }
+            </div>
+        } @else {
+            <router-outlet></router-outlet>
+        }
     </div>
 </mat-sidenav-container>
