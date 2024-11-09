@@ -1,43 +1,31 @@
-<div class="wrapper">
-    <div class="return-book">
-        <div class="row mt-3 mb-3">
-            <div class="form-group col-12">
-                <label class="title-return">Devolución Libros</label>
-            </div>
-        </div>
-        <div class="container">
+<div class="login-container">
+  <h2 class="title">Retornar Libro</h2>
+  <mat-card class="login-card">
 
-            <div class="add-book">
-                <mat-form-field class="mat-input" appearance="outline">
-                    <mat-label>ID del Usuario</mat-label>
-                    <input matInput [(ngModel)]="user.ID" placeholder="Escribe el ID del libro">
-                  </mat-form-field>
-                  <div @If(errors.ID) class="invalid-feedback">{{ errors.ID }}</div>
-            </div>
+    <mat-form-field class="mat-input" appearance="outline">
+      <mat-label>ID del Prestamo</mat-label>
+      <input matInput [(ngModel)]="datosLibro.prestamo_id" placeholder="Escribe el ID del Prestamo">
+    </mat-form-field>
 
-              
-                <mat-form-field class="mat-input" appearance="outline">
-                  <mat-label>ID del Libro</mat-label>
-                  <input matInput [(ngModel)]="book.ID" placeholder="Escribe el ID del libro">
-                </mat-form-field>
-                <div @If(errors.ID) class="invalid-feedback">{{ errors.ID }}</div>
+    <mat-form-field class="mat-input" appearance="outline">
+      <mat-label>ID del Miembro</mat-label>
+      <input matInput [(ngModel)]="datosLibro.miembro_id" placeholder="Escribe el ID del Miembro">
+    </mat-form-field>
 
-            <div class="select-estado">
-                <div class="row mt-3 mb-3">
-                  <div class="form-group col-12">
-                    <label class="title-estado">Selecciona el estado del Libro</label>
-                  </div>
-                </div>
-                <mat-form-field>
-                    <mat-label>Estado del Libro</mat-label>
-                    <mat-select>
-                      @for(estado of estados; track estado) {
-                        <mat-option [value]="book.value">{{book.viewValue}}</mat-option>
-                      }
-                    </mat-select>
-                  </mat-form-field>
-              </div>
-              <button class="btn btn-primary" type="submit" (click)="actualizar()">Actualizar</button>
-        </div>
-    </div>
+    <mat-form-field>
+      <mat-label>Estado</mat-label>
+      <mat-select [(ngModel)]="datosLibro.estado">
+        @for(e of estado; track e) {
+          <mat-option [value]="e.value">{{e.nombre}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button type="submit" (click)="validarPrestamo()">Validar Préstamo</button>
+  </mat-card>
+
+  <mat-card class="response-card">
+    <h4>Respuesta</h4>
+    <p>A Pagar: {{saldo}}</p>
+    <button mat-raised-button type="submit" (click)="regresarLibro()">Retornar Libro</button>
+  </mat-card>
 </div>

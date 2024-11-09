@@ -1,51 +1,75 @@
-.wrapper{
-    height: 100%;
-    width: 100%;
-    //Flex
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    background-color: #000000;
-  }
-  .return-book{
-    width: 100%;
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding-top: 1.5rem;
-    gap: 1.5rem;
-    margin-left: 8px;
-  }
-  
-  .title-return{
-    font-size: 40px;
-    text-align: left;
-    font-family: Nexa-Bold;
-    letter-spacing: 2px;
-    color: #ffffff;
-    text-transform: capitalize;
-    opacity: 1;
-  }
-  .container{
-    padding-top: 2.5rem;
-  }
-  
-  .btn-primary {
-    width: 208px;
-    height: 48px;
-    background-color: #00b2b8!important;
-    border-color: #0092B8!important;
-    border-radius: 8px!important;
-    opacity: 1;
-    //Fuente
-    text-align: center;
-    font-family: Nexa-Bold;
-    font-size: 16px;
-    font-weight: bold;
-    letter-spacing: 0px;
-    color: #FFFFFF;
-    opacity: 1;
-  }
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88vh;
+  background-color: #202124; /* Fondo oscuro */
+}
+
+.login-container {
+  text-align: center;
+}
+
+.title {
+  color: white;
+  //font-size: 24px;
+  font-weight: 400;
+  padding: 50px;
+}
+
+.login-card {
+  padding-top: 10px;
+  background-color: #303134; /* Fondo del formulario */
+  color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.response-card {
+  margin-top: 10px;
+  background-color: #303134; /* Fondo del formulario */
+  color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+  margin: 0;
+  font-weight: 400;
+}
+
+p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #b0b0b0;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.forgot-link, .guest-mode-link, .create-account-link {
+  display: block;
+  margin-top: 10px;
+  color: #8ab4f8;
+  font-size: 14px;
+}
+
+.actions {
+  margin-top: 16px;
+}
+
+mat-form-field {
+  color: white;
+}
+
+button {
+  width: 100%;
+  margin-top: 1rem;
+}
