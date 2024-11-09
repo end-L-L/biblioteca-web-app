@@ -56,15 +56,6 @@
           }
         </mat-select>
       </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Tipo</mat-label>
-        <mat-select [(ngModel)]="book.tipo">
-          @for(t of tipo; track t) {
-            <mat-option [value]="t.value">{{t.nombre}}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
       <button mat-raised-button type="submit" (click)="actualizar()">Agregar</button>
 		
     </div>
@@ -85,8 +76,12 @@
           </mat-form-field>
           
           <mat-form-field>
-            <mat-label>Ubicación</mat-label>
-            <input matInput [(ngModel)]="ejemplar_ubicacion" placeholder="Pasillo 3">
+            <mat-label>Tipo</mat-label>
+            <mat-select [(ngModel)]="ejemplar_tipo">
+              @for(t of tipo; track t) {
+                <mat-option [value]="t.value">{{t.nombre}}</mat-option>
+              }
+            </mat-select>
           </mat-form-field>
 
           <mat-form-field>

@@ -43,8 +43,8 @@ export class ManageComponent implements OnInit {
   
   // variables de ejemplar
   public ejemplar_isbn: string = "";
-  public ejemplar_ubicacion: string = "";
   public ejemplar_estado: string = "";
+  public ejemplar_tipo: string = "";
 
   public categoria: string = "";
   public area: string = "";
@@ -104,7 +104,7 @@ export class ManageComponent implements OnInit {
 
   public addEjemplar(){
     console.log(this.ejemplar_isbn);
-    console.log(this.ejemplar_ubicacion);
+    console.log(this.ejemplar_tipo);
     console.log(this.ejemplar_estado);
   }
 
