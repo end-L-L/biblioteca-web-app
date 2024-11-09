@@ -1,54 +1,160 @@
+<!-- Content -->
 <div class="wrapper">
-    <div class="manage-book">
-        <div class="row mt-3 mb-3">
-            <div class="form-group col-12">
-                <label class="title-manage">Gestión de Libros</label>
-            </div>
-        </div>
-        <div class="container">
-          <div class="add-category">
+	<div class="section-left">
 
-            <div class="select-category">
-              <div class="category-container">
+		<div class="title-container">
+			<span class="title">Agregar un Libro</span>
+		</div>
 
-                <label class="title-estado">Selecciona el tipo de Categoría</label>
-                <mat-form-field>
-                  <mat-label>Categoría</mat-label>
-                  <mat-select>
-                    @for(cate of categorias; track cate) {
-                      <mat-option [value]="book.value">{{book.viewValue}}</mat-option>
-                    }
-                  </mat-select>
-                </mat-form-field>
+		<div class="content-container">
 
-                <mat-form-field class="mat-input" appearance="outline">
-                  <mat-label>Ingrese el Nombre de la Categoría</mat-label>
-                  <input matInput [(ngModel)]="book.category" placeholder="Escribe la categoría">
-                </mat-form-field>
-                <div @If(errors.category) class="invalid-feedback">{{ errors.category }}</div>
+      <mat-form-field class="mat-input" appearance="outline">
+        <mat-label>ISBN</mat-label>
+        <input matInput [(ngModel)]="book.isbn" placeholder="ISBN" required/>
+      </mat-form-field>
+      
+      <mat-form-field class="mat-input" appearance="outline">
+        <mat-label>Título</mat-label>
+        <input matInput [(ngModel)]="book.titulo" placeholder="Las Mil y una Noche">
+      </mat-form-field>
 
-                <button class="btn btn-primary" type="submit" (click)="actualizar()">Actualizar</button>
+      <mat-form-field>
+        <mat-label>Editorial</mat-label>
+        <mat-select [(ngModel)]="book.editorial">
+          @for(e of editoriales; track e) {
+            <mat-option [value]="e.value">{{e.nombre}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field class="mat-input" appearance="outline">
+        <mat-label>Edición</mat-label>
+        <input matInput [(ngModel)]="book.nombre" placeholder="Novena">
+      </mat-form-field>
+      
+      <mat-form-field>
+        <mat-label>Fecha de Publicación</mat-label>
+        <input matInput  [(ngModel)]="book.fecha" [matDatepicker]="picker">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
 
-              </div>
-            </div>
-          </div>
+      <mat-form-field>
+        <mat-label>Área</mat-label>
+        <mat-select [(ngModel)]="book.area">
+          @for(a of areas; track a) {
+            <mat-option [value]="a.value">{{a.nombre}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field>
+        <mat-label>Categoría</mat-label>
+        <mat-select [(ngModel)]="book.categoria">
+          @for(c of categorias; track c) {
+            <mat-option [value]="c.value">{{c.nombre}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
 
-          <div class="field-button-container">
-                  <mat-form-field class="mat-input" appearance="outline">
-                    <mat-label>Agregar un Libro</mat-label>
-                    <input matInput [(ngModel)]="user.ID" placeholder="Escribe el ID del libro">
-                  </mat-form-field>
-                  <button class="btn btn-primary" type="submit" (click)="actualizar()">Agregar</button>
-                </div>
-                
-                <div class="field-button-container">
-                  <mat-form-field class="mat-input" appearance="outline">
-                    <mat-label>Eliminar un Libro</mat-label>
-                    <input matInput [(ngModel)]="book.ID" placeholder="Escribe el ID del libro">
-                  </mat-form-field>
-                  <button class="btn btn-primary" type="submit" (click)="actualizar()">Actualizar</button>
-                </div>
-                
-        </div>
+      <mat-form-field>
+        <mat-label>Tipo</mat-label>
+        <mat-select [(ngModel)]="book.tipo">
+          @for(t of tipo; track t) {
+            <mat-option [value]="t.value">{{t.nombre}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button type="submit" (click)="actualizar()">Agregar</button>
+		
     </div>
+	</div>
+
+	<div class="section-right">
+		<div class="title-container">
+			<span class="title">Control</span>
+		</div>
+    <div class="actions">
+      <mat-card class="action-card">
+        <h4>Añadir Ejemplar</h4>
+        <div class="action-buttons">
+          
+          <mat-form-field>
+            <mat-label>ISBN</mat-label>
+            <input matInput [(ngModel)]="ejemplar_isbn" placeholder="9788417255244">
+          </mat-form-field>
+          
+          <mat-form-field>
+            <mat-label>Ubicación</mat-label>
+            <input matInput [(ngModel)]="ejemplar_ubicacion" placeholder="Pasillo 3">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Estado</mat-label>
+            <mat-select [(ngModel)]="ejemplar_estado">
+              @for(e of estado; track e) {
+                <mat-option [value]="e.value">{{e.nombre}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
+          <button mat-raised-button type="submit" (click)="addEjemplar()">Añadir</button>
+        </div>
+      </mat-card>
+  
+      <mat-card class="action-card">
+        <h4>Añadir Categoría</h4>
+        <div class="action-buttons">
+          <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput [(ngModel)]="categoria"/>
+          </mat-form-field>
+          <button mat-raised-button type="submit" (click)="addCategoria()">Añadir</button>
+        </div>
+      </mat-card>
+  
+      <mat-card class="action-card">
+        <h4>Añadir Área</h4>
+        <div class="action-buttons">
+          <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput [(ngModel)]="area"/>
+          </mat-form-field>
+          <button mat-raised-button type="submit" (click)="addArea()">Añadir</button>
+        </div>
+      </mat-card>
+
+      <mat-card class="action-card">
+        <h4>Añadir Editorial</h4>
+        <div class="action-buttons">
+          <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput [(ngModel)]="editorial"/>
+          </mat-form-field>
+          <button mat-raised-button type="submit" (click)="addEditorial()">Añadir</button>
+        </div>
+      </mat-card>
+  
+      <mat-card class="action-card">
+        <h4>Añadir Miembro</h4>
+        <div class="action-buttons">
+          <mat-form-field>
+            <mat-label>ID</mat-label>
+            <input matInput [(ngModel)]="miembro.id"/>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput [(ngModel)]="miembro.nombre"/>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Apelidos</mat-label>
+            <input matInput [(ngModel)]="miembro.apellidos"/>
+          </mat-form-field>
+          <button mat-raised-button type="submit" (click)="addMiembro()">Añadir</button>
+        </div>
+      </mat-card>
+    </div>
+	</div>
 </div>
