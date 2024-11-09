@@ -1,68 +1,73 @@
-.wrapper{
-  height: 100%;
-  width: 100%;
-  //Flex
+:host {
   display: flex;
-  flex-direction: row;
+  align-items: center;
   justify-content: center;
-  align-items: flex-start;
-  background-color: #000000;
-}
-.settings{
-  width: 100%;
-  height: 90vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding-top: 1.5rem;
-  gap: 1.5rem;
-  margin-left: 8px;
+  height: 88vh;
+  background-color: #202124; /* Fondo oscuro */
 }
 
-.title-settings{
-  font-size: 40px;
-  text-align: left;
-  font-family: Nexa-Bold;
-  letter-spacing: 2px;
-  color: #ffffff;
-  text-transform: capitalize;
-  opacity: 1;
-}
-
-.container{
-  padding-top: 2.5rem;
-}
-
-.container mat-form-field + button{
-  margin-left: 20px;
-}
-
-.container-delay mat-form-field + button{
-  margin-left: 20px;
-}
-
-.losses mat-form-field + button{
-  margin-left: 20px;
-}
-
-.delay mat-form-field + button{
-  margin-left: 20px;
-}
-
-.btn-primary {
-  width: 208px;
-  height: 48px;
-  background-color: #0092B8!important;
-  border-color: #0092B8!important;
-  border-radius: 8px!important;
-  opacity: 1;
-  //Fuente
+.container {
   text-align: center;
-  font-family: Nexa-Bold;
-  font-size: 16px;
-  font-weight: bold;
-  letter-spacing: 0px;
-  color: #FFFFFF;
-  opacity: 1;
+}
+
+.title {
+  color: white;
+  //font-size: 24px;
+  font-weight: 400;
+  padding: 50px;
+}
+
+.primary-card {
+  margin-top: 10px;
+  background-color: #303134; /* Fondo del formulario */
+  color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.secondary-card {
+  margin-top: 10px;
+  background-color: #303134; /* Fondo del formulario */
+  color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+  margin: 0;
+  font-weight: 400;
+}
+
+p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #b0b0b0;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.forgot-link, .guest-mode-link, .create-account-link {
+  display: block;
+  margin-top: 10px;
+  color: #8ab4f8;
+  font-size: 14px;
+}
+
+.actions {
+  margin-top: 16px;
+}
+
+mat-form-field {
+  color: white;
+}
+
+button {
+  width: 100%;
+  margin-top: 1rem;
 }
