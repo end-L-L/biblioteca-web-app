@@ -30,7 +30,7 @@ export class LoansComponent implements OnInit {
   constructor(private loansService: LoansService) {}
 
   ngOnInit() {
-    this.loansService.getLoans().subscribe((loans) => {
+    this.loansService.GetLoans().subscribe((loans) => {
       this.dataSource.data = loans;
     });
   }

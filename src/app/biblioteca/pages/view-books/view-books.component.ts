@@ -33,12 +33,12 @@ export class ViewBooksComponent implements OnInit {
   constructor(private booksService: BooksService) {}
 
   ngOnInit() {
-    this.booksService.getBooks().subscribe((books) => {
+    this.booksService.GetBooks().subscribe((books) => {
       this.dataSource.data = books;
     });
   }
 
   removeBook(bookId: number) {
-    this.booksService.removeBook(bookId);
+    this.booksService.DeleteBooks(bookId);
   }
 }
