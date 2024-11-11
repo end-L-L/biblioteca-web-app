@@ -18,6 +18,11 @@
         <input matInput [(ngModel)]="book.titulo" placeholder="Las Mil y una Noche">
       </mat-form-field>
 
+      <mat-form-field class="mat-input" appearance="outline">
+        <mat-label>Autor</mat-label>
+        <input matInput [(ngModel)]="book.autor" placeholder="Recopilación">
+      </mat-form-field>
+
       <mat-form-field>
         <mat-label>Editorial</mat-label>
         <mat-select [(ngModel)]="book.editorial">
