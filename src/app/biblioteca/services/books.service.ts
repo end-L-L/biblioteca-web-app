@@ -1,55 +1,52 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-interface Book {
-  id: number; // ID del libro
-  title: string;
-  author: string;
-  year: number;
-  genre: string;
-  condition: 'good' | 'bad'; // Estado del libro
-}
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root',
 })
 export class BooksService {
-  constructor() {
-    this.books = [
-      {
-        id: 1,
-        title: '1984',
-        author: 'George Orwell',
-        year: 1949,
-        genre: 'Dystopian',
-        condition: 'good',
-      },
-      {
-        id: 2,
-        title: 'The Great Gatsby',
-        author: 'F. Scott Fitzgerald',
-        year: 1925,
-        genre: 'Classic',
-        condition: 'bad',
-      },
-      //libros de prueba
-    ];
-    this.booksSubject.next(this.books); // Inicializa el Subject con los libros de prueba
-  }
-  private books: Book[] = [];
-  private booksSubject = new BehaviorSubject<Book[]>(this.books);
 
-  getBooks() {
-    return this.booksSubject.asObservable();
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  public getEditoriales(){
+    return this.http.get<any>('http://localhost:8000/api/v1/editoriales', httpOptions);
+  }
+  
+  public getAreas(){
+    return this.http.get<any>('http://localhost:8000/api/v1/areas', httpOptions);
+  }
+  
+  public getCategorias(){
+    return this.http.get<any>('http://localhost:8000/api/v1/categorias', httpOptions);
+  }
+  
+  public getLibros(){
+    return this.http.get<any>('http://localhost:8000/api/v1/libros', httpOptions);
+  }
+  
+  public registrarLibro(data: any){
+    return this.http.post<any>('http://localhost:8000/api/v1/libros', data, httpOptions);
   }
 
-  addBook(book: Book) {
-    this.books.push(book);
-    this.booksSubject.next(this.books);
+  public registrarEjemplar(data: any){
+    return this.http.post<any>('http://localhost:8000/api/v1/ejemplares', data, httpOptions);
   }
 
-  removeBook(bookId: number) {
-    this.books = this.books.filter((book) => book.id !== bookId);
-    this.booksSubject.next(this.books);
+  public registrarCategoria(data: any){
+    return this.http.post<any>('http://localhost:8000/api/v1/categorias', data, httpOptions);
+  }
+
+  public registrarArea(data: any){
+    return this.http.post<any>('http://localhost:8000/api/v1/areas', data, httpOptions);
+  }
+
+  public registrarEditorial(data: any){
+    return this.http.post<any>('http://localhost:8000/api/v1/editoriales', data, httpOptions);
   }
 }

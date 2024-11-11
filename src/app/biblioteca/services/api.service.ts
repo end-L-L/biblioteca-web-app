@@ -13,8 +13,4 @@ export class ApiService {
   constructor(
     private http: HttpClient
   ) { }
-
-  public getLibros(){
-    return this.http.get<any>('http://localhost:8000/api/v1/libros', httpOptions);
-  }
 }

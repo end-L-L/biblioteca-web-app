@@ -1,11 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-//import { BooksService } from '../../services/books.service'; // Asegúrate de que la ruta sea correcta
 
 // Api Service
-import { ApiService } from '../../services/api.service';
-
+import { BooksService } from '../../services/books.service';
 
 @Component({
   selector: 'app-view-books',
@@ -17,8 +15,7 @@ import { ApiService } from '../../services/api.service';
 export class ViewBooksComponent implements OnInit {
   
   constructor(
-    //private booksService: BooksService,
-    private apiService: ApiService
+    private booksService: BooksService
   ) {}
 
   ngOnInit() {
@@ -35,11 +32,10 @@ export class ViewBooksComponent implements OnInit {
     'edicion'
   ];
 
-  //dataSource = new MatTableDataSource<Book>();
   dataSource = new MatTableDataSource<DatosLibro>(this.libros as DatosLibro[]);
 
   public obtenerLibros(){
-    this.apiService.getLibros().subscribe({
+    this.booksService.getLibros().subscribe({
       next: (response: any) => {
         this.libros = response;
         console.log(response);
