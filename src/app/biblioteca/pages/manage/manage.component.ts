@@ -12,6 +12,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import { provideNativeDateAdapter } from '@angular/material/core';
 
+// Api Service
+import { ApiService } from '../../services/api.service';
+
 
 @Component({
   selector: 'app-manage',
@@ -33,7 +36,12 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 })
 export class ManageComponent implements OnInit {
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
+
+  constructor(
+    private api: ApiService
+  ) {}
 
   //variables de petición
   public book: any = {};
@@ -50,6 +58,8 @@ export class ManageComponent implements OnInit {
   public area: string = "";
   public editorial: string = "";
   public miembro: any = {};
+
+  public libros: any = {};
 
   // array áreas
   public areas:any[]= [
@@ -123,4 +133,6 @@ export class ManageComponent implements OnInit {
   public addMiembro(){
     console.log(this.miembro);
   }
+
+
 }
