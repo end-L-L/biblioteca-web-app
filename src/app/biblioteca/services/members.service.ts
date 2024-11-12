@@ -15,6 +15,10 @@ export class MembersService {
   ) { }
   
   public registrarMiembro(data: any){
-    return this.http.post<any>('http://localhost:8000/api/v1/create-member', data, httpOptions);
+    return this.http.post<any>('http://localhost:8000/api/v1/miembros', data, httpOptions);
+  }
+
+  public obtenerMiembros(){
+    return this.http.get<any>('http://localhost:8000/api/v1/miembros', httpOptions);
   }
 }
