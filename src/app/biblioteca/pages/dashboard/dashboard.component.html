@@ -11,7 +11,7 @@
         </mat-toolbar>
 
         <mat-nav-list>
-            <a mat-list-item routerLink="./library" (click)="sidenav.toggle()" (click)=" switch()" style="display: flex;">
+            <a mat-list-item routerLink="/library" (click)="sidenav.toggle()" style="display: flex;">
                 <mat-icon mat-list-icon class="m-icon">list</mat-icon>
                 <span> Dashboard</span>
             </a>
@@ -54,7 +54,7 @@
 
         @if ( showDashboard ) {
             <h1 class="title-center">Seleccione una Opción</h1>
-            <div class="dashboard-container" (click)="switch()">
+            <div class="dashboard-container">
                 @for (option of options; track option){
                     <mat-card (click)="navigateTo(option.link)">
                         <mat-card-header class="card-header-center">
