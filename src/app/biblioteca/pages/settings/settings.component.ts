@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 // Material
@@ -8,6 +8,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
+
+// ApiService
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-settings',
@@ -24,29 +27,89 @@ import { MatCardModule } from '@angular/material/card';
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss'
 })
-export class SettingsComponent {
-  
+export class SettingsComponent implements OnInit{
+
+  constructor(
+    private apiService: ApiService
+  ) { }
+
+  ngOnInit(): void {
+    this.apiService.getConfiguration().subscribe({
+      next: (response: any) => {
+        this.defaultConfig = response;
+        console.log(response);
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    })
+  }
+
   //variables
   public errors:any={};
-  public dias_prestamo:number | undefined;
-  public dias_retraso:number | undefined;
-  public cuota_extravio:number | undefined;
+  public prestamoConfig:any={};
+  public retrasoConfig:any={};
+  public extravioConfig:any={};
+  public defaultConfig:any={};
 
-  
-  ngOnInit(){}
+  public valor:number = 10;
 
-  //functions
-
-  public diasPrestamo(){
-    console.log('prestamo', this.dias_prestamo);
+  public configPrestamo(){
+    this.apiService.setConfiguration(this.prestamoConfig).subscribe({
+      next: (response: any) => {
+        this.prestamoConfig = response;
+        console.log(response);
+        alert('Configuración Guardada');
+        this.loadData();
+      },
+      error: (error) => {
+        console.log(error);
+        alert('Error al guardar la configuración');
+      }
+    })
   }
 
-  public diasRetraso(){
-    console.log('retraso', this.dias_retraso);
+  public configRetraso(){
+    console.log(this.retrasoConfig);
+    this.apiService.setConfiguration(this.retrasoConfig).subscribe({
+      next: (response: any) => {
+        this.retrasoConfig = response;
+        console.log(response);
+        alert('Configuración Guardada');
+        this.loadData();
+      },
+      error: (error) => {
+        console.log(error);
+        alert('Error al guardar la configuración');
+      }
+    })
   }
 
-  public extravio(){
-    console.log('extravio', this.cuota_extravio);
+  public configExtravio(){
+    this.apiService.setConfiguration(this.extravioConfig).subscribe({
+      next: (response: any) => {
+        this.extravioConfig = response;
+        console.log(response);
+        alert('Configuración Guardada');
+        this.loadData();
+      },
+      error: (error) => {
+        console.log(error);
+        alert('Error al guardar la configuración');
+      }
+    })
   }
+
+  // Método para cargar los datos actualizados
+private loadData() {
+  this.apiService.getConfiguration().subscribe({
+    next: (data: any) => {
+      this.defaultConfig = data; // Actualiza los datos de la configuración en la vista
+    },
+    error: (error) => {
+      console.log(error);
+    }
+  });
+}
 
 }
