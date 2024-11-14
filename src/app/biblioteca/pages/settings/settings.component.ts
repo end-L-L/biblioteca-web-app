@@ -101,15 +101,15 @@ export class SettingsComponent implements OnInit{
   }
 
   // Método para cargar los datos actualizados
-private loadData() {
-  this.apiService.getConfiguration().subscribe({
-    next: (data: any) => {
-      this.defaultConfig = data; // Actualiza los datos de la configuración en la vista
-    },
-    error: (error) => {
-      console.log(error);
-    }
-  });
-}
+  private loadData() {
+    this.apiService.getConfiguration().subscribe({
+      next: (data: any) => {
+        this.defaultConfig = data; // Actualiza los datos de la configuración en la vista
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
 
 }
