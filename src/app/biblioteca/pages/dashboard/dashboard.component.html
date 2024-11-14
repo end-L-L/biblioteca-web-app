@@ -11,7 +11,7 @@
         </mat-toolbar>
 
         <mat-nav-list>
-            <a mat-list-item routerLink="./library" (click)="sidenav.toggle()" (click)=" switch()" style="display: flex;">
+            <a mat-list-item routerLink="/library" (click)="sidenav.toggle()" style="display: flex;">
                 <mat-icon mat-list-icon class="m-icon">list</mat-icon>
                 <span> Dashboard</span>
             </a>
@@ -26,15 +26,15 @@
             </a>
             <a mat-list-item routerLink="./return" (click)="sidenav.toggle()" style="display: flex;">
                 <mat-icon mat-list-icon class="m-icon">list</mat-icon>
-                <span>Devolver Libro</span>
+                <span>Préstamo/Devolución</span>
             </a>
             <a mat-list-item routerLink="./members" (click)="sidenav.toggle()" style="display: flex;">
                 <mat-icon mat-list-icon class="m-icon">list</mat-icon>
-                <span>Miembros</span>
+                <span>Listado de Miembros</span>
             </a>
             <a mat-list-item routerLink="./loans" (click)="sidenav.toggle()" style="display: flex;">
                 <mat-icon mat-list-icon class="m-icon">list</mat-icon>
-                <span>Gestión de Prestamos</span>
+                <span>Listado de Prestamos</span>
             </a>
             <a mat-list-item routerLink="./settings" (click)="sidenav.toggle()" style="display: flex;">
                 <mat-icon mat-list-icon class="m-icon">list</mat-icon>
@@ -54,7 +54,7 @@
 
         @if ( showDashboard ) {
             <h1 class="title-center">Seleccione una Opción</h1>
-            <div class="dashboard-container" (click)="switch()">
+            <div class="dashboard-container">
                 @for (option of options; track option){
                     <mat-card (click)="navigateTo(option.link)">
                         <mat-card-header class="card-header-center">

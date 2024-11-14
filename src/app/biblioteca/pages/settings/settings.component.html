@@ -1,28 +1,33 @@
 <div class="container">
     <h2 class="title">Configuraciones</h2>
     <mat-card class="primary-card">
-  
+      <span>Valor Actual: {{defaultConfig.dias_prestamo}} Días</span>
+      <br>
       <mat-form-field class="mat-input" appearance="outline">
         <mat-label>Días de Prestamo</mat-label>
-        <input matInput [(ngModel)]="dias_prestamo" placeholder="Días de Prestamo Permitidos">
+        <input matInput [(ngModel)]="prestamoConfig.dias_prestamo" placeholder="Días de Prestamo Permitidos" type="number" min="1">
       </mat-form-field>
-      <button mat-raised-button type="submit" (click)="diasPrestamo()">Configurar</button>
+      <button mat-raised-button type="submit" (click)="configPrestamo()">Configurar</button>
     </mat-card>
   
     <mat-card class="secondary-card">
-        <mat-form-field class="mat-input" appearance="outline">
-            <mat-label>Cuota por Día de Retraso</mat-label>
-            <input matInput [(ngModel)]="dias_retraso" placeholder="Días de Prestamo Permitidos">
-          </mat-form-field>
-      <button mat-raised-button type="submit" (click)="diasRetraso()">Configurar</button>
+      <span>Cuota Actual: ${{defaultConfig.cuota_mora}}</span>
+      <br>
+      <mat-form-field class="mat-input" appearance="outline">
+        <mat-label>Cuota por Día de Retraso</mat-label>
+        <input matInput [(ngModel)]="retrasoConfig.cuota_mora" placeholder="$" type="number" min="1">
+      </mat-form-field>
+      <button mat-raised-button type="submit" (click)="configRetraso()">Configurar</button>
     </mat-card>
 
     <mat-card class="secondary-card">
-        <mat-form-field class="mat-input" appearance="outline">
-            <mat-label>Cuota por Extravío</mat-label>
-            <input matInput [(ngModel)]="cuota_extravio" placeholder="$">
-          </mat-form-field>
-      <button mat-raised-button type="submit" (click)="extravio()">Configurar</button>
+      <span>Cuota Actual: ${{defaultConfig.cuota_extravio}}</span>
+      <br>
+      <mat-form-field class="mat-input" appearance="outline">
+        <mat-label>Cuota por Extravío</mat-label>
+        <input matInput [(ngModel)]="extravioConfig.cuota_extravio" placeholder="$" type="number" min="1">
+      </mat-form-field>
+      <button mat-raised-button type="submit" (click)="configExtravio()">Configurar</button>
     </mat-card>
   </div>
   

@@ -1,28 +1,28 @@
 <table mat-table [dataSource]="dataSource">
 
-  <ng-container matColumnDef="memberId">
+  <ng-container matColumnDef="id_miembro">
     <th mat-header-cell *matHeaderCellDef>ID del Miembro</th>
-    <td mat-cell *matCellDef="let loan">{{ loan.memberId }}</td>
+    <td mat-cell *matCellDef="let loan">{{ loan.id_miembro }}</td>
   </ng-container>
 
-  <ng-container matColumnDef="bookTitle">
+  <ng-container matColumnDef="titulo_libro">
     <th mat-header-cell *matHeaderCellDef>Título del Libro</th>
-    <td mat-cell *matCellDef="let loan">{{ loan.bookTitle }}</td>
+    <td mat-cell *matCellDef="let loan">{{ loan.titulo_libro }}</td>
   </ng-container>
 
-  <ng-container matColumnDef="loanDate">
+  <ng-container matColumnDef="fecha_prestamo">
     <th mat-header-cell *matHeaderCellDef>Fecha de Préstamo</th>
-    <td mat-cell *matCellDef="let loan">{{ loan.loanDate | date }}</td>
+    <td mat-cell *matCellDef="let loan">{{ loan.fecha_prestamo | date }}</td>
   </ng-container>
 
-  <ng-container matColumnDef="returnDate">
+  <ng-container matColumnDef="fecha_retorno">
     <th mat-header-cell *matHeaderCellDef>Fecha de Retorno</th>
-    <td mat-cell *matCellDef="let loan">{{ loan.returnDate ? (loan.returnDate | date) : 'No retornado' }}</td>
+    <td mat-cell *matCellDef="let loan">{{ loan.fecha_retorno ? (loan.fecha_retorno | date) : 'No retornado' }}</td>
   </ng-container>
 
-  <ng-container matColumnDef="overdue">
+  <ng-container matColumnDef="vencido">
     <th mat-header-cell *matHeaderCellDef>Vencido</th>
-    <td mat-cell *matCellDef="let loan">{{ loan.overdue ? 'Sí' : 'No' }}</td>
+    <td mat-cell *matCellDef="let loan">{{ loan.vencido ? 'Sí' : 'No' }}</td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

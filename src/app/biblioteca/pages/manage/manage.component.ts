@@ -1,5 +1,4 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
-
 import { FormsModule } from '@angular/forms';
 
 // Angular Material
@@ -12,6 +11,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import { provideNativeDateAdapter } from '@angular/material/core';
 
+// Api Service
+import { BooksService } from '../../services/books.service';
+import { MembersService } from '../../services/members.service';
 
 @Component({
   selector: 'app-manage',
@@ -33,50 +35,34 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 })
 export class ManageComponent implements OnInit {
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.editorialesList();
+    this.areasList();
+    this.categoriasList();
+  }
 
-  //variables de petición
+  constructor(
+    private bookService: BooksService,
+    private memberService: MembersService
+  ) {}
+
+  // variables de petición
   public book: any = {};
   public errors:any={};
-
-  // variables de control
-  
-  // variables de ejemplar
-  public ejemplar_isbn: string = "";
-  public ejemplar_estado: string = "";
-  public ejemplar_tipo: string = "";
-
-  public categoria: string = "";
-  public area: string = "";
-  public editorial: string = "";
+  public ejemplar: any = {};
+  public categoria: any = {};
+  public area: any = {};
+  public editorial: any = {};
   public miembro: any = {};
 
   // array áreas
-  public areas:any[]= [
-    {value: '1', nombre: 'Área 1'},
-    {value: '2', nombre: 'Área 2'},
-    {value: '3', nombre: 'Área 3'},
-    {value: '4', nombre: 'Área 4'},
-    {value: '5', nombre: 'Área 5'},
-  ];
+  public areas:any[]= [];
 
   //array categorías
-  public categorias:any[]= [
-    {value: '1', nombre: 'Categoría 1'},
-    {value: '2', nombre: 'Categoría 2'},
-    {value: '3', nombre: 'Categoría 3'},
-    {value: '4', nombre: 'Categoría 4'},
-    {value: '5', nombre: 'Categoría 5'},
-  ];
+  public categorias:any[]= [];
 
   // array editoriales
-  public editoriales:any[]= [
-    {value: '1', nombre: 'Editorial 1'},
-    {value: '2', nombre: 'Editorial 2'},
-    {value: '3', nombre: 'Editorial 3'},
-    {value: '4', nombre: 'Editorial 4'},
-    {value: '5', nombre: 'Editorial 5'},
-  ];
+  public editoriales:any[]= [];
 
   // array tipo
   public tipo:any[]= [
@@ -88,39 +74,160 @@ export class ManageComponent implements OnInit {
   public estado:any[]= [
     {value: '1', nombre: 'Excelente'},
     {value: '2', nombre: 'Bueno'},
-    {value: '3', nombre: 'Malo'},
-    {value: '4', nombre: 'Deteriorado'}
+    {value: '3', nombre: 'Deteriorado'}
   ];
-
 
   //functions
 
+  // obtener editoriales
+  public editorialesList(){
+    this.bookService.getEditoriales().subscribe({
+      next: (response: any) => {
+        this.editoriales = response;
+        console.log(response);
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    })
+  }
 
-  public actualizar(){
-    //Validación
-    this.errors = [];
+  // obtener áreas
+  public areasList(){
+    this.bookService.getAreas().subscribe({
+      next: (response: any) => {
+        this.areas = response;
+        console.log(response);
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    })
+  }
+
+  // obtener categorías
+  public categoriasList(){
+    this.bookService.getCategorias().subscribe({
+      next: (response: any) => {
+        this.categorias = response;
+        console.log(response);
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    })
+  }
+
+  // registrar libro
+  public registrarLibro(){
     console.log(this.book);
+    this.bookService.registrarLibro(this.book).subscribe({
+      next: (response: any) => {
+        console.log(response);
+        alert("Libro Registrado");
+      },
+      error: (error) => {
+        console.log(error);
+        this.errors = error.error;
+        console.log(this.errors);
+        
+        alert("Error: " + this.errors.message);
+      }
+    })
   }
 
-  public addEjemplar(){
-    console.log(this.ejemplar_isbn);
-    console.log(this.ejemplar_tipo);
-    console.log(this.ejemplar_estado);
+  // registrar ejemplar
+  public registrarEjemplar(){
+    console.log(this.ejemplar);
+    this.bookService.registrarEjemplar(this.ejemplar).subscribe({
+      next: (response: any) => {
+        console.log(response);
+        alert("Ejemplar Registrado");
+      },
+      error: (error) => {
+        console.log(error);
+        this.errors = error.error;
+        console.log(this.errors);
+
+        alert("Error: " + this.errors.message);
+      }
+    })
   }
 
-  public addCategoria(){
+  // registrar categoría
+  public registrarCategoria(){
     console.log(this.categoria);
+    this.bookService.registrarCategoria(this.categoria).subscribe({
+      next: (response: any) => {
+        console.log(response);
+        alert("Categoría Registrada");
+      },
+      error: (error) => {
+        console.log(error);
+        this.errors = error.error;
+        console.log(this.errors);
+
+        alert("Error: " + this.errors.message);
+      }
+    })
   }
 
-  public addArea(){
+  // registrar área
+  public registrarArea(){
     console.log(this.area);
+    this.bookService.registrarArea(this.area).subscribe({
+      next: (response: any) => {
+        console.log(response);
+        alert("Área Registrada");
+      },
+      error: (error) => {
+        console.log(error);
+        this.errors = error.error;
+        console.log(this.errors);
+
+        alert("Error: " + this.errors.message);
+      }
+    })
   }
 
-  public addEditorial(){
+  // registrar editorial
+  public registrarEditorial(){
     console.log(this.editorial);
+    this.bookService.registrarEditorial(this.editorial).subscribe({
+      next: (response: any) => {
+        console.log(response);
+        alert("Editorial Registrada");
+      },
+      error: (error) => {
+        console.log(error);
+        this.errors = error.error;
+        console.log(this.errors);
+
+        alert("Error: " + this.errors.message);
+      }
+    })
   }
 
-  public addMiembro(){
+  // registrar miembro
+  public registrarMiembro(){
     console.log(this.miembro);
+    this.memberService.registrarMiembro(this.miembro).subscribe({
+      next: (response: any) => {
+        console.log(response);
+        alert("Miembro Registrado");
+      },
+      error: (error) => {
+        console.log(error);
+        this.errors = error.error;
+        console.log(this.errors);
+
+        alert("Error: " + this.errors.message);
+      }
+    })
+  }
+
+  //Función para Detectar el Cambio de Fecha
+  public changeFecha(event :any){
+    this.book.fecha_de_publicacion = event.value.toISOString().split("T")[0];
   }
 }

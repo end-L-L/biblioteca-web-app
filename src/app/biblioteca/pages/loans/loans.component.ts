@@ -2,13 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { LoansService } from '../../services/loans.service';
-interface Loan {
-  memberId: string;
-  bookTitle: string;
-  loanDate: Date;
-  returnDate: Date | null;
-  overdue: boolean;
-}
 
 @Component({
   selector: 'app-loans',
@@ -18,20 +11,45 @@ interface Loan {
   styleUrl: './loans.component.scss',
 })
 export class LoansComponent implements OnInit {
-  displayedColumns: string[] = [
-    'memberId',
-    'bookTitle',
-    'loanDate',
-    'returnDate',
-    'overdue',
-  ];
-  dataSource = new MatTableDataSource<Loan>();
-
-  constructor(private loansService: LoansService) {}
+  
+  constructor(
+    private loansService: LoansService
+  ) {}
 
   ngOnInit() {
-    this.loansService.getLoans().subscribe((loans) => {
-      this.dataSource.data = loans;
+    this.obtenerPrestamos();
+  }
+
+  displayedColumns: string[] = [
+    'id_miembro',
+    'titulo_libro',
+    'fecha_prestamo',
+    'fecha_retorno',
+    'vencido',
+  ];
+  
+  lista_prestamos: any [] = [];
+  
+  dataSource = new MatTableDataSource<Loan>(this.lista_prestamos as Loan[]);
+
+  public obtenerPrestamos() {
+    this.loansService.getPrestamos().subscribe({
+      next: (response) => {
+        console.log(response);
+        this.lista_prestamos = response;
+        this.dataSource.data = response;
+      },
+      error: (error) => {
+        console.error(error);
+      }
     });
   }
+}
+
+interface Loan {
+  id_miembro: string;
+  titulo_libro: string;
+  fecha_prestamo: Date;
+  fecha_retorno: Date | null;
+  vencido: boolean;
 }

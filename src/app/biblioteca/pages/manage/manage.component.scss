@@ -13,10 +13,9 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  //margin-top: 30px;
-  align-items: center; // asegura que el título esté centrado verticalmente
-  justify-content: flex-start; // asegura que el título esté centrado horizontalmente
-  gap: 30px; // espacio entre los elementos
+  align-items: center;
+  justify-content: flex-start;
+  gap: 30px;
 }
 
 .title-container {
@@ -26,9 +25,8 @@
   background-color: #c2185b;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // sombra suave para dar profundidad
-  width: 80%; // ancho relativo para dar espacio alrededor del título
-  //margin: auto; // asegura centrado horizontal cuando flex no está disponible
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
 }
 
 .title {
@@ -44,8 +42,7 @@
 .content-container {
   display: flex;
   flex-direction: column;
-  width: 80%;
-  //margin: auto;
+  width: 73%;
   padding: 20px;
   font-family: 'Arial', sans-serif;
   color: #333333;
@@ -59,9 +56,7 @@
 
 mat-form-field input:disabled {
   color: #ffffff;
-  /* Cambia el color del texto */
   font-weight: bold;
-  /* Hace el texto en negrita */
 }
 
 mat-form-field mat-label {
@@ -76,7 +71,6 @@ mat-form-field mat-label {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  //padding-left: 16px;
 
   .action-card {
     display: flex;
@@ -84,6 +78,7 @@ mat-form-field mat-label {
     align-items: center;
     padding: 10px;
     border-radius: 10px;
+    background-color: #424242;
 
     h4 {
       margin-bottom: 4px;
@@ -94,12 +89,12 @@ mat-form-field mat-label {
       display: flex;
       gap: 8px;
       align-items: center;
-      width: 100%;
+      width: 95%;
 
       mat-form-field {
         flex: 1;
       }
-
+      
       button {
         min-width: 80px;
       }
