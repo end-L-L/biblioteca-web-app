@@ -1,31 +1,63 @@
 <div class="login-container">
-  <h2 class="title">Retornar Libro</h2>
-  <mat-card class="login-card">
+  <h2 class="title">Préstamo y Devolución</h2>
+  <div class="form-container">
+    <!-- Nuevo formulario agregado al lado -->
+    <mat-card class="new-form-card">
+      <h4>Préstamo</h4>
+      <mat-form-field class="mat-input" appearance="outline">
+        <mat-label>ISBN del Libro</mat-label>
+        <input matInput [(ngModel)]="datosPrestamo.isbn" placeholder="ISBN"  type="number">
+      </mat-form-field>
 
-    <mat-form-field class="mat-input" appearance="outline">
-      <mat-label>ID del Prestamo</mat-label>
-      <input matInput [(ngModel)]="datosLibro.prestamo_id" placeholder="Escribe el ID del Prestamo">
-    </mat-form-field>
+      <mat-form-field class="mat-input" appearance="outline">
+        <mat-label>Número de Membresía</mat-label>
+        <input matInput [(ngModel)]="datosPrestamo.miembro_id" placeholder="#" type="number">
+      </mat-form-field>
 
-    <mat-form-field class="mat-input" appearance="outline">
-      <mat-label>ID del Miembro</mat-label>
-      <input matInput [(ngModel)]="datosLibro.miembro_id" placeholder="Escribe el ID del Miembro">
-    </mat-form-field>
+      <mat-form-field>
+        <mat-label>Fecha de Inicio</mat-label>
+        <input matInput [matDatepicker]="picker" [min]="minDate"  (dateChange)="changeFecha($event)">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Estado</mat-label>
-      <mat-select [(ngModel)]="datosLibro.estado">
-        @for(e of estado; track e) {
-          <mat-option [value]="e.value">{{e.nombre}}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-    <button mat-raised-button type="submit" (click)="validarPrestamo()">Validar Préstamo</button>
-  </mat-card>
+      <mat-form-field>
+        <mat-label>Fecha de Fin</mat-label>
+        <input matInput [value]="fechaFin | date:'MM/dd/yyyy'" disabled>
+      </mat-form-field>
 
-  <mat-card class="response-card">
-    <h4>Respuesta</h4>
-    <p>A Pagar: {{saldo}}</p>
-    <button mat-raised-button type="submit" (click)="regresarLibro()">Retornar Libro</button>
-  </mat-card>
+      <button mat-raised-button type="submit" (click)="registrarPrestamo()">Procesar</button>
+    </mat-card>
+
+    <mat-card class="login-card">
+      <h4>Validar Préstamo</h4>
+      <mat-form-field class="mat-input" appearance="outline">
+        <mat-label>ISBN del Libro</mat-label>
+        <input matInput [(ngModel)]="datosDevolucion.isbn" placeholder="ISBN" type="number">
+      </mat-form-field>
+
+      <mat-form-field class="mat-input" appearance="outline">
+        <mat-label>ID del Miembro</mat-label>
+        <input matInput [(ngModel)]="datosDevolucion.id_miembro" placeholder="ID" type="number">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Estado del Libro</mat-label>
+        <mat-select [(ngModel)]="datosDevolucion.id_estado">
+          @for(e of estado; track e) {
+            <mat-option [value]="e.value">{{e.nombre}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-raised-button type="submit" (click)="validarPrestamo()">Validar Préstamo</button>
+    </mat-card>
+
+    <mat-card class="response-card">
+      <h4>Respuesta Retorno</h4>
+      <p>Cuota Extravío: ${{saldoExtravio}}</p>
+      <p>Cuota Retraso: ${{saldoRetraso}}</p>
+      <button mat-raised-button type="submit" (click)="registrarDevolucion()">Retornar Libro</button>
+    </mat-card>
+  </div>
 </div>

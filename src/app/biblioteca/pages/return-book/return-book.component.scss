@@ -3,34 +3,27 @@
   align-items: center;
   justify-content: center;
   height: 88vh;
-  background-color: #202124; /* Fondo oscuro */
+  background-color: #202124;
 }
 
 .login-container {
   text-align: center;
 }
 
+.form-container {
+  display: flex;
+  gap: 20px; /* Espacio entre los formularios */
+}
+
 .title {
   color: white;
-  //font-size: 24px;
   font-weight: 400;
   padding: 50px;
 }
 
-.login-card {
+.login-card, .response-card, .new-form-card {
   padding-top: 10px;
-  background-color: #303134; /* Fondo del formulario */
-  color: white;
-  padding: 2rem;
-  border-radius: 8px;
-  max-width: 400px;
-  width: 100%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-}
-
-.response-card {
-  margin-top: 10px;
-  background-color: #303134; /* Fondo del formulario */
+  background-color: #303134;
   color: white;
   padding: 2rem;
   border-radius: 8px;
@@ -52,17 +45,6 @@ p {
 
 .full-width {
   width: 100%;
-}
-
-.forgot-link, .guest-mode-link, .create-account-link {
-  display: block;
-  margin-top: 10px;
-  color: #8ab4f8;
-  font-size: 14px;
-}
-
-.actions {
-  margin-top: 16px;
 }
 
 mat-form-field {
