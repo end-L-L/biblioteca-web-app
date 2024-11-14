@@ -74,8 +74,7 @@ export class ManageComponent implements OnInit {
   public estado:any[]= [
     {value: '1', nombre: 'Excelente'},
     {value: '2', nombre: 'Bueno'},
-    {value: '3', nombre: 'Malo'},
-    {value: '4', nombre: 'Deteriorado'}
+    {value: '3', nombre: 'Deteriorado'}
   ];
 
   //functions
