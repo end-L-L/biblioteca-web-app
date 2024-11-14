@@ -31,13 +31,17 @@ const MATERIAL_MODULES = [
 })
 export class DashboardComponent implements OnInit {
   
+
   ngOnInit() {
+    this.showDashboard = this.router.url === '/library';
+
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.showDashboard = event.url === '/library';
       }
     });
   }
+
   constructor(
     private router: Router
   ) {}
@@ -47,7 +51,7 @@ export class DashboardComponent implements OnInit {
   options = [
     { name: 'Ver Libros', icon: 'icons/view_books.png', link: '/library/books' },
     { name: 'Gestión de Biblioteca', icon: 'icons/manage_books.png', link: '/library/manage' },
-    { name: 'Préstamo/Retorno', icon: 'icons/return_books.png', link: '/library/return' },
+    { name: 'Préstamo/Devolución', icon: 'icons/return_books.png', link: '/library/return' },
     { name: 'Lista de Miembros', icon: 'icons/members_books.png', link: '/library/members' },
     { name: 'Lista de Préstamos', icon: 'icons/loans_books.png', link: '/library/loans' },
     { name: 'Ajustes', icon: 'icons/settings.png', link: '/library/settings' }
